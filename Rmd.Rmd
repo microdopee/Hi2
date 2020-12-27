@@ -1,8 +1,0 @@
----
-title: "R markdown practice"
-author: "Saksher"
-date: "27/12/2020"
-output: pdf_document
----
-
-## R Hello world
