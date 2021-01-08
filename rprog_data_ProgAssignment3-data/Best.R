@@ -2,50 +2,48 @@ best<-function(state,outcome)
 {
 #read files and rearrange by states 
   read_file<-read.csv("~/datasciencecoursera/rprog_data_ProgAssignment3-data/outcome-of-care-measures.csv")
-  data_by_state<-subset(read_file[,c(11,17,23)],outcome$State==state)
+  read_file<-subset(read_file,read_file$State==state)
   
 #match state name and subset 
-  if(data_by_state=NULL)
+  if(is.null(read_file))
     {
-    print("Invalid state")
-    stop()
+    stop("Invalid state")
     }
 #match by outcome
   if(outcome=="heart attack")
   {
     #row_index of minimum value
-    minimum<-min(data_by_state[,11])
+    minimum<-min(read_file[,11], na.rm = TRUE)
     #get row with minimum value
-    row_index<-which(data_by_state[,11]==minimum)
+    row_index<-which(read_file[,11]==minimum)
   }
   else if (outcome=="heart failure")
   {
     #row_index of minimum value
-    minimum<-min(data_by_state[,17])
+    minimum<-min(read_file[,17], na.rm = TRUE)
     #get row with minimum value
-    row_index<-which(data_by_state[,17]==minimum)
+    row_index<-which(read_file[,17]==minimum)
   }
   else if (outcome=="pneumonia")
   {
     #row_index of minimum value
-    minimum<-min(data_by_state[,23])
+    minimum<-min(read_file[,23], na.rm = TRUE)
     #get row with minimum value
-    row_index<-which(data_by_state[,23]==minimum)
+    row_index<-which(read_file[,23]==minimum)
   }
   else 
   {
-    print("Invalid outcome")
-    stop()
+    stop("Invalid outcome")
   }
 #Printing alphabetically
-  if(length(row_index!=1))
+  if(length(row_index)!=1)
   {
-    sorting_data<-data_by_state[row_index,2]
+    sorting_data<-read_file[row_index,2]
     sorted_list<-sort(sorting_data[,2])
     print(sorted_list[1])
   }
   else
   {
-    print(data_by_state[row_index,2])
+    print(read_file[row_index,2])
   }
 }
