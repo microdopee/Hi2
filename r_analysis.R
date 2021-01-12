@@ -41,3 +41,8 @@ names(full)<-sub("Z"," along Z ",names(full))
 names(full)<-sub("BodyBody"," body ",names(full))
 
 write.table(full, "Course 3 tidy data.txt", row.names = FALSE)
+
+Step5 <- full %>%
+  group_by(subject, activity) %>%
+  summarise_all(funs(mean))
+write.table(Step5, "GroupedMean.txt", row.name=FALSE)

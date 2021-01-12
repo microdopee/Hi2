@@ -16,3 +16,4 @@ functions
 names(full): Renamed Column names for clarity
 
 Course 3 tidy data.txt: Tidy dataset txt file
+Step5: Grouped mean dataset
